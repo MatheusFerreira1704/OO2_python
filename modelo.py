@@ -19,15 +19,25 @@ class Programa:
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
         
+    # metodo especial para representar o objeto em string  
+    def __str__(self):
+        return f'Nome: {self._nome} Ano: {self.ano} Likes: {self._like}'
+    
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
         self.duracao = duracao
+        
+    def __str__(self):
+        return f'Nome: {self._nome} Ano: {self.ano} Duração: {self.duracao} Likes: {self._like}'
 
 class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
         self.temporadas = temporadas
+        
+    def __str__(self):
+        return f'Nome: {self._nome} Ano: {self.ano} Temporada: {self.temporadas} Likes: {self._like}'
      
 
 
@@ -41,5 +51,11 @@ vingadores.dar_likes()
 atlanta.dar_likes()
 atlanta.dar_likes()
 
-print(f'Nome: {vingadores.nome} - Ano: {vingadores.ano}')
-print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano}')
+
+# Lista de programas -> Armazena os objetos criados. 
+# Com uso do  polimofirmo conseguimos imprimir os objetos atraveis do metodo de __str__
+lista_programas = [vingadores, atlanta]
+for programa in lista_programas:
+    print(programa)
+
+
