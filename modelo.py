@@ -38,24 +38,37 @@ class Serie(Programa):
         
     def __str__(self):
         return f'Nome: {self._nome} Ano: {self.ano} Temporada: {self.temporadas} Likes: {self._like}'
+    
+class Playlist():
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self.programas = programas
      
+    def tamanho(self):
+        return len(self.programas)
+    
 
 
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
 atlanta = Serie('atlanta', 2018, 2)
-vingadores.dar_likes()
-vingadores.dar_likes()
-vingadores.dar_likes()
+tmep = Filme('todo mundo em panico', 1999, 100)
+demolidor = Serie('demolidor', 2016, 2)
 
+vingadores.dar_likes()
+vingadores.dar_likes()
+vingadores.dar_likes()
 atlanta.dar_likes()
 atlanta.dar_likes()
+tmep.dar_likes()
+tmep.dar_likes()
+demolidor.dar_likes()
+demolidor.dar_likes()
 
+listinha = [atlanta, vingadores, demolidor, tmep]
+minha_playlist = Playlist('fim de semana', listinha)
 
-# Lista de programas -> Armazena os objetos criados. 
-# Com uso do  polimofirmo conseguimos imprimir os objetos atraveis do metodo de __str__
-lista_programas = [vingadores, atlanta]
-for programa in lista_programas:
+for programa in minha_playlist.programas:
     print(programa)
 
 
