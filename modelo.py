@@ -39,10 +39,18 @@ class Serie(Programa):
     def __str__(self):
         return f'Nome: {self._nome} Ano: {self.ano} Temporada: {self.temporadas} Likes: {self._like}'
     
-class Playlist(list):
+class Playlist():
     def __init__(self, nome, programas):
         self.nome = nome
-        super().__init__(programas)
+        self._programas = programas
+    
+    @property    
+    def listagem(self):
+        return self._programas
+    
+    @property
+    def tamanho(self):
+        return len(self._programas)
      
     
 
@@ -66,10 +74,8 @@ demolidor.dar_likes()
 listinha = [atlanta, vingadores, demolidor, tmep]
 minha_playlist = Playlist('fim de semana', listinha)
 
-#Como herou de list, assumiu todo o comportamento de uma lista 
-# porém tem alguns problemas nessa abordagem, como acoplamento e aumento da complexidade da sua classe.
-print(f'Tamanho: {len(minha_playlist)}')
-for programa in minha_playlist:
+
+for programa in minha_playlist.listagem:
     print(programa)
 
 
