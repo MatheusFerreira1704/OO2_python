@@ -40,17 +40,23 @@ class Serie(Programa):
         return f'Nome: {self._nome} Ano: {self.ano} Temporada: {self.temporadas} Likes: {self._like}'
     
 class Playlist():
+   # Essas alterações removeram a complexidade da herança, 
+  #  e encapsula a listagem pra ficar claro pro usuário que existe uma propriedade representando 
+   # os programas listados e também o tamanho (já que você perdeu a vantagem de herdar list).
     def __init__(self, nome, programas):
         self.nome = nome
         self._programas = programas
+        
+    # Duck typing -> Conceito de quando absorvemos comportamentos de classe, sem precisar herdar   
+    # metodos listagem e tamanho foram removidos, devido aos metodos mágicos. 
+    def __getitem__(self, item):
+        return self._programas[item]
     
-    @property    
-    def listagem(self):
-        return self._programas
-    
-    @property
-    def tamanho(self):
+    def __len__(self):
         return len(self._programas)
+        
+    
+    
      
     
 
@@ -72,10 +78,12 @@ demolidor.dar_likes()
 demolidor.dar_likes()
 
 listinha = [atlanta, vingadores, demolidor, tmep]
+
 minha_playlist = Playlist('fim de semana', listinha)
 
+print(f'Tamanho da playlist: {len(minha_playlist)}')
 
-for programa in minha_playlist.listagem:
+for programa in minha_playlist:
     print(programa)
 
 
